@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Clearmail - Spam Detector</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center px-4">
+  <div class="w-full max-w-lg bg-white rounded-2xl shadow-lg p-8">
+    <h1 class="text-2xl font-bold text-center text-gray-800 mb-6">📬 Clearmail</h1>
+    <form method="POST" class="space-y-4">
+      {% csrf_token %}
+      <label class="block text-sm font-medium text-gray-700">Paste your email text:</label>
+      <textarea name="message" rows="6" required class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
+      <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition">
+        Check for Spam
+      </button>
+    </form>
+    {% if prediction %}
+    <div class="mt-6 text-center p-4 rounded-lg {% if prediction == 'Spam' %}bg-red-100 text-red-800{% else %}bg-green-100 text-green-800{% endif %}">
+      <strong>Result:</strong> {{ prediction }}
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>

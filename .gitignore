@@ -1,0 +1,16 @@
+# Virtual environment
+
+
+# Django stuff
+db.sqlite3
+
+# Mac files
+.DS_Store
+
+# Model files
+*.pkl
+
+venv/
+__pycache__/
+*.pyc
+*.pkl
